@@ -18,3 +18,8 @@ Internet of Vehicles (车联网) — 追责与撤销机制研究
 - 证书/凭证撤销机制（Certificate/Credential Revocation）
 - 零知识证明匿名认证（ZKP-Based Anonymous Authentication）
 - 联邦学习异常检测（Federated Learning for Misbehavior Detection）
+- 多智能体协同追责与撤销（Multi-Agent Collaborative Accountability & Revocation）
+
+## 改进方向
+
+- [多智能体（Agent）协同设计方案](docs/agent_collaboration_design.md) — 面向车联网追责与撤销场景的多Agent协同架构、协议及实现路线。
