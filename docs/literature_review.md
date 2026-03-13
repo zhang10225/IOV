@@ -263,6 +263,19 @@
 | **P9** | Trusted Setup 不灵活 | 迁移至 PLONK 或 Halo2 等透明设置方案 |
 | **P10** | 非 IID 数据导致收敛慢 | 使用 FedProx 或 SCAFFOLD 等改进联邦优化算法 |
 
+### 4.1.1 跨论文改进方向——多智能体（Agent）协同
+
+上述 P1–P10 各自独立解决认证、追责或撤销的某一环节，但缺乏端到端的跨实体协作机制。引入**多智能体协同**可将车辆、RSU、追踪机构（TA）、区块链节点建模为自主Agent，通过以下方式提升系统整体性能：
+
+| 协同方向 | 融合论文 | 核心思路 |
+|----------|----------|----------|
+| **协同信任评估** | P1 + P10 | 车辆Agent与RSU Agent协同，联邦学习模型输出信任分，条件隐私认证根据信任分动态调整验证强度 |
+| **分布式追责决策** | P6 + P2 | 多个TA Agent通过MPC协议协同完成追责，追责结果写入区块链智能合约，避免单点TA权力集中 |
+| **自适应撤销策略** | P3 + P4 + P5 | RSU Agent根据本地交通密度和威胁态势，自主选择最优撤销机制（VLR/布隆过滤器/属性撤销），协商全局一致的撤销列表 |
+| **跨域认证协商** | P7 + P9 | 不同管理域的Agent通过零知识证明完成跨域身份互认，无证书认证Agent负责域内快速验证 |
+
+> 详细设计方案见 [Agent协同设计文档](agent_collaboration_design.md)。
+
 ### 4.2 可行复现改进路径
 
 ```
@@ -282,7 +295,8 @@
 ├── 选取 2-3 个改进方向实现原型
 │   ├── 路径 A：Accumulator + VLR 群签名（P3 + P8 融合）
 │   ├── 路径 B：Off-chain 验证 + 链上追责（P2 + P9 融合）
-│   └── 路径 C：联邦学习异常检测 + MPC 追责（P10 + P6 融合）
+│   ├── 路径 C：联邦学习异常检测 + MPC 追责（P10 + P6 融合）
+│   └── 路径 D：多智能体协同追责与自适应撤销（P1+P6+P10 融合，Agent 架构）
 ├── 与基线方案进行对比实验
 └── 撰写技术报告
 
@@ -381,7 +395,14 @@
 - [ ] **IMP-1**：实现路径 A（Accumulator + VLR 群签名融合方案）
 - [ ] **IMP-2**：实现路径 B（Off-chain 验证 + 链上追责）
 - [ ] **IMP-3**：实现路径 C（联邦学习检测 + MPC 追责）
-- [ ] **IMP-4**：改进方案 vs 基线方案性能对比
+- [ ] **IMP-4**：实现路径 D（多智能体协同追责与自适应撤销）
+  - [ ] **IMP-4a**：定义 Agent 接口（Vehicle Agent, RSU Agent, TA Agent, Blockchain Agent）
+  - [ ] **IMP-4b**：实现 Agent 间通信协议（基于消息队列或 gRPC）
+  - [ ] **IMP-4c**：实现协同信任评估模块（联邦学习信任分 + 动态验证策略）
+  - [ ] **IMP-4d**：实现分布式追责决策模块（多 TA Agent 门限协同）
+  - [ ] **IMP-4e**：实现自适应撤销策略选择模块（RSU Agent 根据场景切换策略）
+  - [ ] **IMP-4f**：在 SUMO + NS-3 仿真环境中测试 Agent 协同性能
+- [ ] **IMP-5**：改进方案 vs 基线方案性能对比
 
 ---
 
@@ -426,6 +447,8 @@
 | Hyperledger Fabric | 联盟链平台 | https://www.hyperledger.org/projects/fabric |
 | Hardhat | Ethereum 开发框架 | https://hardhat.org/ |
 | VeReMi | 车联网异常行为数据集 | https://github.com/VeReMi-dataset |
+| SPADE | 多智能体系统开发平台（Python） | https://github.com/javipalanca/spade |
+| Mesa | Agent-Based Modeling 框架（Python） | https://github.com/projectmesa/mesa |
 
 ## 附录 B: 统一 Docker 环境配置参考
 
