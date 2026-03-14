@@ -1,0 +1,11 @@
+# IOV 多智能体协同仿真——Python 依赖
+# 基础仿真无额外依赖（仅需 Python 3.8+）
+#
+# 以下为可选扩展依赖（用于进阶实验）：
+# charm-crypto       # 密码学原语（ECC、配对、ABE 等）
+# flwr>=1.0          # 联邦学习框架 (Flower)
+# torch>=2.0         # 深度学习模型（LSTM/Autoencoder）
+# numpy>=1.21        # 数值计算
+# matplotlib>=3.5    # 结果可视化
+# web3>=6.0          # 以太坊智能合约交互
+# pycryptodome>=3.15 # 加密工具库
