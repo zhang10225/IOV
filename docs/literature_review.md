@@ -1,6 +1,6 @@
 # 车联网追责与撤销机制——近五年文献综述与复现实验清单
 
-> **检索范围**：2021 – 2026 年发表的学术期刊论文及顶会/次顶会论文
+> **检索范围**：2022 – 2026 年发表的学术期刊论文及顶会/次顶会论文（附 2021 年 1 篇经典基线论文）
 > **关键词**：车联网（IoV / VANET）、追责（Accountability / Traceability）、撤销（Revocation）、条件隐私保护（Conditional Privacy）、群签名（Group Signature）、区块链（Blockchain）
 > **数据库**：IEEE Xplore、ACM Digital Library、Springer、IACR ePrint、DBLP
 
@@ -24,7 +24,7 @@
 | 步骤 | 内容 |
 |------|------|
 | 关键词组合 | `("Internet of Vehicles" OR "VANET" OR "vehicular network") AND ("accountability" OR "traceability" OR "revocation") AND ("privacy" OR "authentication")` |
-| 时间范围 | 2021-01-01 至 2026-03-01 |
+| 时间范围 | 2022-01-01 至 2026-03-01（P1 为 2021 年经典基线论文，保留供参考） |
 | 来源 | IEEE Xplore, ACM DL, Springer Link, IACR ePrint, DBLP |
 | 语言 | 英文为主，中文辅助（知网 CNKI、万方） |
 
