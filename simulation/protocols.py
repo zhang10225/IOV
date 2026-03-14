@@ -46,10 +46,11 @@ def collaborative_trust_evaluation(
         local_score = 1.0 - anomaly_score  # 异常分越高，信任分越低
 
         # 步骤 2: 邻居交叉验证（模拟：取其他车辆对该车辆的平均评分）
+        # 恶意车辆：邻居检测到异常概率较高，信任分被拉低（基线 1.0 减去检测到的部分异常）
+        # 正常车辆：邻居观察到的信任分较高（基线 0.8 加少量正向波动）
         neighbor_scores = []
         for other in vehicles:
             if other.pseudo_id != vehicle.pseudo_id:
-                # 其他车辆检测该车辆的异常程度（简化模拟）
                 if vehicle.is_malicious:
                     neighbor_scores.append(1.0 - other.detect_anomaly() * 0.5)
                 else:

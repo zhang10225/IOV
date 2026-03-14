@@ -122,7 +122,7 @@ class RSUAgent:
         elif trust > 0.5:
             return True, "standard"
         else:
-            # 增强认证：恶意车辆有概率被拒绝
+            # 增强认证：恶意车辆有 60% 概率被拒绝（模拟 ZKP 身份证明失败）
             if vehicle.is_malicious and random.random() < 0.6:
                 return False, "enhanced_rejected"
             return True, "enhanced"

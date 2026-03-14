@@ -159,7 +159,11 @@ def run_simulation(cfg: ScenarioConfig) -> dict:
     print(f"  恶意车辆检测次数:        {detected_malicious} / {total_malicious} (总恶意车辆)")
     print(f"  追责请求数:              {len(trace_results)}")
     print(f"  追责成功数:              {len(successful_traces)}")
-    print(f"  追责成功率:              {len(successful_traces)/len(trace_results)*100:.1f}%" if trace_results else "  追责成功率:              N/A")
+    if trace_results:
+        rate = len(successful_traces) / len(trace_results) * 100
+        print(f"  追责成功率:              {rate:.1f}%")
+    else:
+        print("  追责成功率:              N/A")
     print(f"  平均追责延迟:            {avg_trace_latency:.2f} ms")
     print(f"  区块链撤销数:            {blockchain.revocation_count}")
     print(f"  审计日志条目:            {blockchain.audit_log_size}")
