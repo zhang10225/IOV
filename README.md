@@ -10,6 +10,21 @@ Internet of Vehicles (车联网) — 追责与撤销机制研究
 
 - [文献综述与复现实验清单](docs/literature_review.md) — 包含 10 篇核心论文的实验设置、指标、复现难点、改进方案及可执行复现清单。
 - [GLOBECOM 投稿指南](docs/globecom_submission_guide.md) — 面向 IEEE GLOBECOM 会议投稿的论文筛选（5 篇可复现论文，2022–2026）、Agent 协同研究思路拓展与实验方案设计建议。
+- [Agent 实验指南](docs/agent_experiment_guide.md) — **从零开始加入 Agent 的完整操作指南**：环境准备、基线复现、加入 Agent 协同、改进实验、消融实验设计。
+
+## 仿真代码
+
+- [多智能体协同仿真](simulation/) — Python 仿真原型，包含四类 Agent（Vehicle/RSU/TA/Blockchain）和三项核心协同协议（信任评估/分布式追责/自适应撤销）。
+
+### 快速运行
+
+```bash
+# 运行默认场景 S1（城市路口，200 车辆，4 RSU）
+python -m simulation.run_simulation
+
+# 运行测试
+python -m pytest tests/ -v
+```
 
 ## 研究方向
 
